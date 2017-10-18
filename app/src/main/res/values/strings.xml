@@ -1,3 +1,14 @@
 <resources>
+    <!--app名字-->
     <string name="app_name">BiliBili</string>
+    <!--因不符合数据格式等原因造成服务器请求出错提示信息-->
+    <string name="app_toast_service_error">服务器请求错误</string>
+    <!--网络断开或出错提示信息-->
+    <string name="app_toast_network_error">网络出错</string>
+    <!--无数据提示信息-->
+    <string name="app_toast_none_data_error">无数据</string>
+    <!--加载完所有数据提示信息-->
+    <string name="app_toast_load_all_data">已加载完所有数据</string>
+    <!--用户操作成功提示信息-->
+    <string name="app_toast_return_success">操作成功</string>
 </resources>
