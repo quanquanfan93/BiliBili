@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="#ffffff"
+              android:orientation="vertical">
+
+    <View android:background="?android:listDivider"
+          android:layout_width="fill_parent"
+          android:layout_height="1dip"/>
+
+    <LinearLayout
+        android:id="@+id/fix_footer"
+        android:layout_width="fill_parent"
+        android:layout_height="48.0dp"
+        android:orientation="horizontal"
+        >
+
+        <RelativeLayout
+            android:id="@+id/nav_setting"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+
+                <com.bilibili.magicasakura.widgets.TintImageView
+                    android:background="@drawable/shape_ring_thick_1_size_30"
+                    android:padding="8dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/vector_navigation_setting"
+                    app:imageTint="#999999"
+                    app:backgroundTint="#999999"
+                    />
+
+                <com.bilibili.magicasakura.widgets.TintTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nav_setting_setting"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center"
+                    android:scaleX="0.9"
+                    android:scaleY="0.9"
+                    />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/nav_theme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+                <com.bilibili.magicasakura.widgets.TintImageView
+                    android:background="@drawable/shape_ring_thick_1_size_30"
+                    android:padding="8dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/vector_navigation_theme"
+                    app:imageTint="#999999"
+                    app:backgroundTint="#999999"
+                    />
+
+                <com.bilibili.magicasakura.widgets.TintTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="主题"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center"
+                    android:scaleX="0.9"
+                    android:scaleY="0.9"
+                    />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/nav_night"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+                <com.bilibili.magicasakura.widgets.TintImageView
+                    android:background="@drawable/shape_ring_thick_1_size_30"
+                    android:padding="8dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/vector_navigation_night"
+                    app:imageTint="#999999"
+                    app:backgroundTint="#999999"
+                    />
+
+                <com.bilibili.magicasakura.widgets.TintTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="夜间"
+                    android:layout_marginLeft="5dp"
+                    android:layout_gravity="center"
+                    android:scaleY="0.9"
+                    android:scaleX="0.9"
+                    />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

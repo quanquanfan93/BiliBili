@@ -1,14 +1,22 @@
 <resources>
     <!--app名字-->
-    <string name="app_name">BiliBili</string>
+    <string name="app_name">哔哩哩</string>
     <!--因不符合数据格式等原因造成服务器请求出错提示信息-->
     <string name="app_toast_service_error">服务器请求错误</string>
     <!--网络断开或出错提示信息-->
-    <string name="app_toast_network_error">网络出错</string>
+    <string name="app_toast_network_error">电波无法达到哟</string>
     <!--无数据提示信息-->
     <string name="app_toast_none_data_error">无数据</string>
     <!--加载完所有数据提示信息-->
     <string name="app_toast_load_all_data">已加载完所有数据</string>
     <!--用户操作成功提示信息-->
     <string name="app_toast_return_success">操作成功</string>
+
+    <!--主界面toolbar菜单：游戏中心-->
+    <string name="main_toolbar_menu_game_center">游戏中心</string>
+    <!--主界面toolbar菜单：管理缓存-->
+    <string name="main_toolbar_menu_download">管理缓存</string>
+    <!--主界面toolbar菜单：搜索-->
+    <string name="main_toolbar_menu_search">搜索</string>
+    <string name="nav_setting_setting">设置</string>
 </resources>
