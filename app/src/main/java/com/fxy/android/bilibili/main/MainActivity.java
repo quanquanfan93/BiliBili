@@ -8,12 +8,19 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.ActionBarContainer;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
 
 import com.fxy.android.bilibili.R;
 import com.fxy.android.bilibili.base.BaseFragmentActivity;
+import com.fxy.android.bilibili.category.view.CategoryFragment;
+import com.fxy.android.bilibili.communicate.view.CommunicateFragment;
+import com.fxy.android.bilibili.dynamic.view.DynamicFragment;
+import com.fxy.android.bilibili.home.view.HomeFragment;
 import com.fxy.android.bilibili.utils.BottomNavigationViewHelper;
 import com.fxy.android.bilibili.utils.ToastUtils;
 
@@ -22,7 +29,7 @@ import butterknife.BindView;
 /**
  * @author FXY
  */
-public class MainActivity extends BaseFragmentActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends BaseFragmentActivity implements NavigationView.OnNavigationItemSelectedListener,BottomNavigationView.OnNavigationItemSelectedListener{
     @BindView(R.id.tb_main_tool)
     Toolbar mToolbar;
     @BindView(R.id.dl_main)
@@ -31,7 +38,10 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
     NavigationView mNavigationView;
     @BindView(R.id.bnv_main_view)
     BottomNavigationView mBottomNavigationView;
+    @BindView(R.id.tv_main_title)
+    TextView mTitleTextView;
 
+    private Menu mToolbarMenu;
 
     @Override
     protected int getContentViewId() {
@@ -43,13 +53,14 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
         setSupportActionBar(mToolbar);
         ActionBar actionBar=getSupportActionBar();
         if(actionBar!=null){
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setHomeAsUpIndicator(R.mipmap.ic_drawer_home);
             actionBar.setDisplayShowTitleEnabled(false);
         }
+        mToolbarMenu=mToolbar.getMenu();
         mNavigationView.setNavigationItemSelectedListener(this);
+        mBottomNavigationView.setOnNavigationItemSelectedListener(this);
         displayNavigationViewScrollbars(mNavigationView);
         BottomNavigationViewHelper.disableShiftMode(mBottomNavigationView);
+        replaceFragment(R.id.content_layout,new HomeFragment(),false);
     }
 
     @Override
@@ -111,6 +122,42 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
                 break;
             case R.id.nav_member_order:
                 ToastUtils.showShort(this,"this is member order");
+                break;
+            case R.id.bottom_nav_home:
+                ToastUtils.showShort(this,"this is nav home");
+                replaceFragment(R.id.content_layout,new HomeFragment(),false);
+                mTitleTextView.setText("");
+                mToolbarMenu.findItem(R.id.tb_main_toolbar_game_center).setVisible(true);
+                mToolbarMenu.findItem(R.id.tb_main_toolbar_download).setVisible(true);
+                mToolbarMenu.findItem(R.id.tb_main_toolbar_search).setVisible(true);
+                break;
+            case R.id.bottom_nav_category:
+                ToastUtils.showShort(this,"this is nav category");
+                replaceFragment(R.id.content_layout,new CategoryFragment(),false);
+                mTitleTextView.setText("分区");
+                try {
+                    mToolbarMenu.findItem(R.id.tb_main_toolbar_game_center).setVisible(false);
+                    mToolbarMenu.findItem(R.id.tb_main_toolbar_download).setVisible(false);
+                    mToolbarMenu.findItem(R.id.tb_main_toolbar_search).setVisible(true);
+                }catch (Exception e){
+                    ToastUtils.showShort(this,e.toString());
+                }
+                break;
+            case R.id.bottom_nav_dynamic:
+                ToastUtils.showShort(this,"this is dynamic");
+                replaceFragment(R.id.content_layout,new DynamicFragment(),false);
+                mTitleTextView.setText("动态");
+                mToolbarMenu.findItem(R.id.tb_main_toolbar_game_center).setVisible(false);
+                mToolbarMenu.findItem(R.id.tb_main_toolbar_download).setVisible(false);
+                mToolbarMenu.findItem(R.id.tb_main_toolbar_search).setVisible(false);
+                break;
+            case R.id.bottom_nav_communicate:
+                ToastUtils.showShort(this,"this is communicate");
+                replaceFragment(R.id.content_layout,new CommunicateFragment(),false);
+                mTitleTextView.setText("消息");
+                mToolbarMenu.findItem(R.id.tb_main_toolbar_game_center).setVisible(false);
+                mToolbarMenu.findItem(R.id.tb_main_toolbar_download).setVisible(false);
+                mToolbarMenu.findItem(R.id.tb_main_toolbar_search).setVisible(false);
                 break;
             default:
                 break;

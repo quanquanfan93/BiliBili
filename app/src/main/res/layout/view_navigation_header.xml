@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.bilibili.magicasakura.widgets.TintRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="138dip"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:background="@color/theme_color_primary">
+                                                      xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                      android:layout_width="match_parent"
+                                                      android:layout_height="138dip"
+                                                      android:background="@color/theme_color_primary">
 
     <com.bilibili.magicasakura.widgets.TintImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:src="@mipmap/bili_drawerbg_not_logined"
         android:scaleType="fitEnd"
+        android:src="@mipmap/bili_drawerbg_not_logined"
         app:imageTint="#99f0486c"
         />
 
@@ -19,21 +19,21 @@
         android:id="@+id/nav_portrait"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@mipmap/ic_portrait_placeholder"
         android:paddingStart="20dp"
         android:paddingTop="8dp"
+        android:src="@mipmap/ic_portrait_placeholder"
         />
 
     <TextView
         android:id="@+id/nav_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/nav_portrait"
+        android:gravity="center"
+        android:paddingStart="20dp"
+        android:paddingTop="6dp"
         android:text="点击头像登录"
         android:textColor="#FFF"
         android:textSize="14sp"
-        android:layout_below="@+id/nav_portrait"
-        android:paddingStart="20dp"
-        android:paddingTop="6dp"
-        android:gravity="center"
         />
 </com.bilibili.magicasakura.widgets.TintRelativeLayout>

@@ -8,7 +8,7 @@
           android:id="@+id/bottom_nav_category"
           android:title="分区" />
     <item android:icon="@drawable/selector_dynamic"
-          android:id="@+id/bottom_nav_attention"
+          android:id="@+id/bottom_nav_dynamic"
           android:title="动态" />
     <item android:icon="@drawable/selector_communicate"
           android:id="@+id/bottom_nav_communicate"
