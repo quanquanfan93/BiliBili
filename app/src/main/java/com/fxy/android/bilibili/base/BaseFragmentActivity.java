@@ -1,8 +1,8 @@
 package com.fxy.android.bilibili.base;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 
 /**
@@ -22,7 +22,7 @@ public abstract class BaseFragmentActivity extends BaseActivity {
      */
     public FragmentManager getBaseFragmentManager(){
         if(mFragmentManager==null){
-            mFragmentManager=getFragmentManager();
+            mFragmentManager=getSupportFragmentManager();
         }
         return mFragmentManager;
     }

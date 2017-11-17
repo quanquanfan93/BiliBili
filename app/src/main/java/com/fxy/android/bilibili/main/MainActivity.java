@@ -3,15 +3,19 @@ package com.fxy.android.bilibili.main;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.internal.NavigationMenuView;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBar;
-import android.support.v7.widget.ActionBarContainer;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -29,7 +33,7 @@ import butterknife.BindView;
 /**
  * @author FXY
  */
-public class MainActivity extends BaseFragmentActivity implements NavigationView.OnNavigationItemSelectedListener,BottomNavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends BaseFragmentActivity implements NavigationView.OnNavigationItemSelectedListener,BottomNavigationView.OnNavigationItemSelectedListener,View.OnClickListener{
     @BindView(R.id.tb_main_tool)
     Toolbar mToolbar;
     @BindView(R.id.dl_main)
@@ -40,6 +44,16 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
     BottomNavigationView mBottomNavigationView;
     @BindView(R.id.tv_main_title)
     TextView mTitleTextView;
+    @BindView(R.id.rl_navigation_view)
+    RelativeLayout mNavigationRelativeLayout;
+    @BindView(R.id.iv_main_drawer_home)
+    ImageView mDrawerHomeImageView;
+    @BindView(R.id.rl_main_drawer_home)
+    RelativeLayout mDrawerHomeRelativeLayout;
+    @BindView(R.id.nested_scroll_view)
+    NestedScrollView mNestedScrollView;
+    @BindView(R.id.abl_main)
+    AppBarLayout mAppBarLayout;
 
     private Menu mToolbarMenu;
 
@@ -58,9 +72,11 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
         mToolbarMenu=mToolbar.getMenu();
         mNavigationView.setNavigationItemSelectedListener(this);
         mBottomNavigationView.setOnNavigationItemSelectedListener(this);
+        mToolbar.setOnClickListener(this);
         displayNavigationViewScrollbars(mNavigationView);
         BottomNavigationViewHelper.disableShiftMode(mBottomNavigationView);
         replaceFragment(R.id.content_layout,new HomeFragment(),false);
+        mNestedScrollView.setFillViewport(true);//解决NestedScrollView嵌套ViewPager时显示不完全的问题。
     }
 
     @Override
@@ -130,18 +146,16 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
                 mToolbarMenu.findItem(R.id.tb_main_toolbar_game_center).setVisible(true);
                 mToolbarMenu.findItem(R.id.tb_main_toolbar_download).setVisible(true);
                 mToolbarMenu.findItem(R.id.tb_main_toolbar_search).setVisible(true);
+                mAppBarLayout.setElevation(0);
                 break;
             case R.id.bottom_nav_category:
                 ToastUtils.showShort(this,"this is nav category");
                 replaceFragment(R.id.content_layout,new CategoryFragment(),false);
                 mTitleTextView.setText("分区");
-                try {
-                    mToolbarMenu.findItem(R.id.tb_main_toolbar_game_center).setVisible(false);
-                    mToolbarMenu.findItem(R.id.tb_main_toolbar_download).setVisible(false);
-                    mToolbarMenu.findItem(R.id.tb_main_toolbar_search).setVisible(true);
-                }catch (Exception e){
-                    ToastUtils.showShort(this,e.toString());
-                }
+                mToolbarMenu.findItem(R.id.tb_main_toolbar_game_center).setVisible(false);
+                mToolbarMenu.findItem(R.id.tb_main_toolbar_download).setVisible(false);
+                mToolbarMenu.findItem(R.id.tb_main_toolbar_search).setVisible(true);
+                mAppBarLayout.setElevation(10);
                 break;
             case R.id.bottom_nav_dynamic:
                 ToastUtils.showShort(this,"this is dynamic");
@@ -150,6 +164,7 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
                 mToolbarMenu.findItem(R.id.tb_main_toolbar_game_center).setVisible(false);
                 mToolbarMenu.findItem(R.id.tb_main_toolbar_download).setVisible(false);
                 mToolbarMenu.findItem(R.id.tb_main_toolbar_search).setVisible(false);
+                mAppBarLayout.setElevation(10);
                 break;
             case R.id.bottom_nav_communicate:
                 ToastUtils.showShort(this,"this is communicate");
@@ -158,6 +173,7 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
                 mToolbarMenu.findItem(R.id.tb_main_toolbar_game_center).setVisible(false);
                 mToolbarMenu.findItem(R.id.tb_main_toolbar_download).setVisible(false);
                 mToolbarMenu.findItem(R.id.tb_main_toolbar_search).setVisible(false);
+                mAppBarLayout.setElevation(10);
                 break;
             default:
                 break;
@@ -176,5 +192,10 @@ public class MainActivity extends BaseFragmentActivity implements NavigationView
                 navigationMenuView.setVerticalScrollBarEnabled(false);
             }
         }
+    }
+
+    @Override
+    public void onClick(View view) {
+        mDrawerLayout.openDrawer(mNavigationRelativeLayout);
     }
 }

@@ -1,10 +1,10 @@
 package com.fxy.android.bilibili.base;
 
-import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
  */
 
 public abstract class BaseFragment extends Fragment implements View.OnTouchListener{
-    protected Activity mActivity;
+    protected AppCompatActivity mActivity;
 
     /**
      * 获取布局ID
@@ -59,8 +59,9 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        this.mActivity=(Activity)context;
+        this.mActivity=(AppCompatActivity)context;
     }
+
 
     /**
      * 防止点击穿透问题
@@ -73,4 +74,5 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
     public boolean onTouch(View view, MotionEvent motionEvent) {
         return true;
     }
+
 }
